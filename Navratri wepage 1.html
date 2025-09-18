@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navratri Bazaar - Festive E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to integrate the theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFF8F0; /* A soft, festive off-white */
+        }
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ea580c' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1600x800/8c2d2d/FFF?text=Festive+Durga+Puja+%26+Garba');
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FBBF24; /* gold */
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* Custom button style */
+        .btn {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        /* Card hover effect */
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-[#fef3c7] text-gray-800">
+
+    <!-- Diya Decoration Top -->
+    <div class="absolute top-0 left-0 right-0 flex justify-center opacity-20 pointer-events-none">
+        <svg width="100%" height="40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1200 40">
+            <path d="M0 20 C 150 40, 250 -10, 400 20 S 550 40, 700 20 S 850 -10, 1000 20 S 1150 40, 1200 20" stroke="#D97706" stroke-width="2" stroke-dasharray="4 4"/>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-deep-red text-white sticky top-0 z-50 shadow-lg" style="background-color: #8c2d2d;">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-heading text-white">Navratri Bazaar</a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Women Sarees</a>
+                <a href="#" class="nav-link">Cosmetics</a>
+                <a href="#" class="nav-link">Traditional Wear</a>
+                <a href="#" class="nav-link">Pooja Samagri</a>
+                <a href="#" class="nav-link text-yellow-300 font-bold">Offers</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search for products..." class="bg-white/20 text-white placeholder-gray-300 rounded-full py-2 px-4 w-64 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <svg class="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                </div>
+                <a href="#" class="relative p-2 hover:bg-white/10 rounded-full">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    <span class="absolute top-0 right-0 bg-yellow-400 text-red-800 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <nav class="flex flex-col space-y-2">
+                <a href="#" class="py-2">Home</a>
+                <a href="#" class="py-2">Women Sarees</a>
+                <a href="#" class="py-2">Cosmetics</a>
+                <a href="#" class="py-2">Traditional Wear</a>
+                <a href="#" class="py-2">Pooja Samagri</a>
+                <a href="#" class="py-2 text-yellow-300 font-bold">Offers</a>
+                <div class="relative pt-4">
+                    <input type="text" placeholder="Search..." class="bg-white/20 text-white placeholder-gray-300 rounded-full py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white h-[60vh] md:h-[80vh] flex items-center justify-center text-center">
+            <div class="bg-black/30 p-8 rounded-lg">
+                <h1 class="text-4xl md:text-7xl font-heading mb-4 leading-tight">Celebrate Navratri with Style & Tradition</h1>
+                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto">Shop Sarees, Cosmetics, Traditional Wear & Pooja Samagri</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#featured" class="btn bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-xl">Shop Now</a>
+                    <a href="#" class="btn bg-yellow-400 hover:bg-yellow-500 text-red-800 font-bold py-3 px-8 rounded-full text-lg shadow-xl">Festive Offers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-16 bg-pattern">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-heading text-red-800 mb-2">Shop by Category</h2>
+                <img src="data:image/svg+xml,%3Csvg width='150' height='20' viewBox='0 0 150 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 S 80 0, 100 10 S 120 20, 150 10' stroke='%23D97706' stroke-width='2' fill='none'/%3E%3C/svg%3E" class="mx-auto mb-12" alt="Decorative underline"/>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Category Card 1 -->
+                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="overflow-hidden">
+                            <img src="https://placehold.co/400x400/b91c1c/FFF?text=Sarees+%26+Dresses" alt="Models in red & yellow traditional Navratri attire" class="w-full h-64 object-cover transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800">Sarees & Dresses</h3>
+                        </div>
+                    </div>
+                    <!-- Category Card 2 -->
+                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                         <div class="overflow-hidden">
+                            <img src="https://placehold.co/400x400/0d9488/FFF?text=Cosmetics+%26+Beauty" alt="Makeup sets with festive packaging" class="w-full h-64 object-cover transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800">Cosmetics & Beauty</h3>
+                        </div>
+                    </div>
+                    <!-- Category Card 3 -->
+                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="overflow-hidden">
+                           <img src="https://placehold.co/400x400/ca8a04/FFF?text=Traditional+Accessories" alt="Bangles, bindis, dupattas, jewelry" class="w-full h-64 object-cover transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800">Traditional Accessories</h3>
+                        </div>
+                    </div>
+                    <!-- Category Card 4 -->
+                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                         <div class="overflow-hidden">
+                           <img src="https://placehold.co/400x400/ea580c/FFF?text=Pooja+Samagri" alt="Kalash, diya, agarbatti, dhoop, sindoor" class="w-full h-64 object-cover transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800">Pooja Samagri</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section id="featured" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-heading text-red-800 mb-2">Festive Specials</h2>
+                <img src="data:image/svg+xml,%3Csvg width='150' height='20' viewBox='0 0 150 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 S 80 0, 100 10 S 120 20, 150 10' stroke='%23D97706' stroke-width='2' fill='none'/%3E%3C/svg%3E" class="mx-auto mb-12" alt="Decorative underline"/>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Product Card 1 -->
+                    <div class="product-card bg-gray-50 rounded-xl shadow-md overflow-hidden text-left border border-gray-200">
+                        <img src="https://placehold.co/600x600/b91c1c/FFF?text=Banarasi+Saree" alt="Red & Gold Banarasi Saree" class="w-full h-72 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Red & Gold Banarasi Saree</h3>
+                            <p class="text-2xl font-bold text-orange-600 mb-4">₹2499</p>
+                            <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="product-card bg-gray-50 rounded-xl shadow-md overflow-hidden text-left border border-gray-200">
+                        <img src="https://placehold.co/600x600/0d9488/FFF?text=Makeup+Kit" alt="Navratri Makeup Kit" class="w-full h-72 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Navratri Makeup Kit</h3>
+                            <p class="text-2xl font-bold text-orange-600 mb-4">₹1199</p>
+                            <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="product-card bg-gray-50 rounded-xl shadow-md overflow-hidden text-left border border-gray-200">
+                        <img src="https://placehold.co/600x600/ea580c/FFF?text=Pooja+Thali" alt="Pooja Thali Set" class="w-full h-72 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Pooja Thali Set</h3>
+                            <p class="text-2xl font-bold text-orange-600 mb-4">₹799</p>
+                            <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-deep-red text-white pt-12 pb-8 bg-pattern" style="background-color: #6b2121;">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-heading mb-4 text-yellow-300">Navratri Bazaar</h3>
+                <p class="text-gray-300">Your one-stop shop for all festive needs. Celebrate with devotion and joy.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">About Us</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">Customer Care</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">Festive Offers</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">Track Order</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Connect With Us</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#" class="text-gray-300 hover:text-yellow-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.732 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-yellow-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.267.058 1.675.072 4.947.072s3.68-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.267.072-1.675.072-4.947s-.014-3.68-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-yellow-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Contact</h4>
+                <p class="text-gray-300">support@navratribazaar.com</p>
+                <p class="text-gray-300">+91 123 456 7890</p>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-700 text-center pt-6">
+            <p class="text-gray-400">&copy; 2024 Navratri Bazaar. All Rights Reserved. Jai Mata Di!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
