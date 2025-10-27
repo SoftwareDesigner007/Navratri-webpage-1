@@ -1,2 +1,2 @@
 # Github-files-1
-All Githun files
+All Github files
