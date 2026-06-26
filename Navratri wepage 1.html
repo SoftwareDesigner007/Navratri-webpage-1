@@ -7,265 +7,422 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles to integrate the theme */
-        body {
+        body, button, input, textarea, select, a, p, li {
             font-family: 'Inter', sans-serif;
-            background-color: #FFF8F0; /* A soft, festive off-white */
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        body {
+            background: #fff7ed;
+            color: #1f2937;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .font-heading {
             font-family: 'Playfair Display', serif;
+            letter-spacing: 0.02em;
         }
         .bg-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ea580c' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ea580c' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1600x800/8c2d2d/FFF?text=Festive+Durga+Puja+%26+Garba');
+            background: linear-gradient(135deg, rgba(140,45,45,0.95), rgba(222,147,18,0.9)), url('https://placehold.co/1600x1100/8c2d2d/fff?text=Navratri+Festive+Bazaar');
             background-size: cover;
             background-position: center;
         }
         .nav-link {
-            position: relative;
-            transition: color 0.3s;
+            transition: color 0.25s ease;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            font-family: 'Inter', sans-serif;
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #FBBF24; /* gold */
-            transition: width 0.3s;
+        .nav-link:hover {
+            color: #fbbf24;
         }
-        .nav-link:hover::after {
-            width: 100%;
+        .btn-soft,
+        .offer-btn {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
         }
-        /* Custom button style */
-        .btn {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn:hover {
+        .btn-soft:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.12);
         }
-        /* Card hover effect */
-        .category-card:hover img {
-            transform: scale(1.05);
+        .category-card:hover img,
+        .product-card:hover img {
+            transform: scale(1.08);
         }
-        .product-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .category-card img,
+        .product-card img {
+            transition: transform 0.45s ease;
         }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.15);
+        .toast {
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-[#fef3c7] text-gray-800">
+<body class="bg-[#fff7ed] text-gray-900">
+    <div class="bg-[#8c2d2d] text-yellow-100 text-center py-2 text-sm font-medium">Free shipping on orders above ₹1499 · Celebrate Navratri with exclusive festival deals</div>
 
-    <!-- Diya Decoration Top -->
-    <div class="absolute top-0 left-0 right-0 flex justify-center opacity-20 pointer-events-none">
-        <svg width="100%" height="40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1200 40">
-            <path d="M0 20 C 150 40, 250 -10, 400 20 S 550 40, 700 20 S 850 -10, 1000 20 S 1150 40, 1200 20" stroke="#D97706" stroke-width="2" stroke-dasharray="4 4"/>
-        </svg>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-deep-red text-white sticky top-0 z-50 shadow-lg" style="background-color: #8c2d2d;">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-heading text-white">Navratri Bazaar</a>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Women Sarees</a>
-                <a href="#" class="nav-link">Cosmetics</a>
-                <a href="#" class="nav-link">Traditional Wear</a>
-                <a href="#" class="nav-link">Pooja Samagri</a>
-                <a href="#" class="nav-link text-yellow-300 font-bold">Offers</a>
+    <header class="sticky top-0 z-50 border-b border-white/20 bg-[#8c2d2d]/95 backdrop-blur-xl">
+        <div class="container mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+            <a href="#home" class="text-2xl md:text-3xl font-heading text-white">Navratri Bazaar</a>
+            <nav class="hidden md:flex items-center gap-4">
+                <a href="#home" class="nav-link text-white bg-white/10 px-4 py-2 rounded-2xl transition hover:bg-white/20">Home</a>
+                <a href="#categories" class="nav-link text-white bg-white/10 px-4 py-2 rounded-2xl transition hover:bg-white/20">Categories</a>
+                <a href="#featured" class="nav-link text-white bg-white/10 px-4 py-2 rounded-2xl transition hover:bg-white/20">Products</a>
+                <a href="#offers" class="nav-link text-white bg-white/10 px-4 py-2 rounded-2xl transition hover:bg-white/20">Offers</a>
+                <a href="#contact" class="nav-link text-white bg-white/10 px-4 py-2 rounded-2xl transition hover:bg-white/20">Contact</a>
             </nav>
-
-            <div class="hidden md:flex items-center space-x-4">
+            <div class="hidden md:flex items-center gap-3">
                 <div class="relative">
-                    <input type="text" placeholder="Search for products..." class="bg-white/20 text-white placeholder-gray-300 rounded-full py-2 px-4 w-64 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                    <svg class="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input id="desktop-search-input" type="text" placeholder="Search products..." class="w-72 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white placeholder:text-white/70 focus:border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/50" />
+                    <button id="desktop-search-button" class="absolute right-3 top-1/2 -translate-y-1/2 text-white" aria-label="Search">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </button>
                 </div>
-                <a href="#" class="relative p-2 hover:bg-white/10 rounded-full">
-                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    <span class="absolute top-0 right-0 bg-yellow-400 text-red-800 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                </a>
+                <button id="cart-button" class="relative rounded-full border border-white/20 bg-white/10 px-3 py-2 text-white hover:bg-white/20">Cart <span id="cart-count" class="ml-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-xs font-semibold text-red-800">0</span></button>
             </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden">
-                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-            </button>
+            <button id="mobile-menu-button" class="md:hidden rounded-full border border-white/20 bg-white/10 px-3 py-2 text-white">Menu</button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-             <nav class="flex flex-col space-y-2">
-                <a href="#" class="py-2">Home</a>
-                <a href="#" class="py-2">Women Sarees</a>
-                <a href="#" class="py-2">Cosmetics</a>
-                <a href="#" class="py-2">Traditional Wear</a>
-                <a href="#" class="py-2">Pooja Samagri</a>
-                <a href="#" class="py-2 text-yellow-300 font-bold">Offers</a>
-                <div class="relative pt-4">
-                    <input type="text" placeholder="Search..." class="bg-white/20 text-white placeholder-gray-300 rounded-full py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                </div>
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#8c2d2d]/95 px-6 py-4 md:hidden">
+            <nav class="flex flex-col gap-3 text-white">
+                <a href="#home" class="block rounded-2xl bg-white/10 px-4 py-2 transition hover:bg-white/20">Home</a>
+                <a href="#categories" class="block rounded-2xl bg-white/10 px-4 py-2 transition hover:bg-white/20">Categories</a>
+                <a href="#featured" class="block rounded-2xl bg-white/10 px-4 py-2 transition hover:bg-white/20">Products</a>
+                <a href="#offers" class="block rounded-2xl bg-white/10 px-4 py-2 transition hover:bg-white/20">Offers</a>
+                <a href="#contact" class="block rounded-2xl bg-white/10 px-4 py-2 transition hover:bg-white/20">Contact</a>
             </nav>
+            <div class="relative mt-4">
+                <input id="mobile-search-input" type="text" placeholder="Search..." class="w-full rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white placeholder:text-white/70 focus:border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/50" />
+                <button id="mobile-search-button" class="absolute right-3 top-1/2 -translate-y-1/2 text-white" aria-label="Search">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-bg text-white h-[60vh] md:h-[80vh] flex items-center justify-center text-center">
-            <div class="bg-black/30 p-8 rounded-lg">
-                <h1 class="text-4xl md:text-7xl font-heading mb-4 leading-tight">Celebrate Navratri with Style & Tradition</h1>
-                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto">Shop Sarees, Cosmetics, Traditional Wear & Pooja Samagri</p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#featured" class="btn bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-xl">Shop Now</a>
-                    <a href="#" class="btn bg-yellow-400 hover:bg-yellow-500 text-red-800 font-bold py-3 px-8 rounded-full text-lg shadow-xl">Festive Offers</a>
+    <main id="home">
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 lg:flex lg:items-center lg:justify-between">
+                <div class="max-w-2xl">
+                    <p class="text-sm uppercase tracking-[0.35em] text-yellow-200">Navratri Special Collection</p>
+                    <h1 class="mt-6 text-4xl font-heading leading-tight text-white sm:text-5xl lg:text-6xl">Festive fashion, ritual essentials and joyful gifts for a memorable Navratri.</h1>
+                    <p class="mt-6 max-w-2xl text-base text-amber-100 sm:text-lg">Discover curated sarees, beauty boxes, pooja thalis, accessories and festival offers with fast delivery and easy returns.</p>
+                    <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                        <a href="#categories" class="btn-soft inline-flex items-center justify-center rounded-full bg-yellow-400 px-8 py-3 text-sm font-semibold text-red-900 shadow-lg shadow-yellow-400/30 hover:bg-yellow-300">Shop Collections</a>
+                        <a href="#offers" class="btn-soft inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white hover:bg-white/20">View Offers</a>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Categories Section -->
-        <section class="py-16 bg-pattern">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-heading text-red-800 mb-2">Shop by Category</h2>
-                <img src="data:image/svg+xml,%3Csvg width='150' height='20' viewBox='0 0 150 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 S 80 0, 100 10 S 120 20, 150 10' stroke='%23D97706' stroke-width='2' fill='none'/%3E%3C/svg%3E" class="mx-auto mb-12" alt="Decorative underline"/>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Category Card 1 -->
-                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                        <div class="overflow-hidden">
-                            <img src="https://placehold.co/400x400/b91c1c/FFF?text=Sarees+%26+Dresses" alt="Models in red & yellow traditional Navratri attire" class="w-full h-64 object-cover transition-transform duration-500">
+                <div class="mt-14 lg:mt-0">
+                    <div class="rounded-[32px] border border-white/20 bg-white/10 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl sm:p-8">
+                        <div class="text-sm uppercase tracking-[0.35em] text-yellow-100">Featured Deal</div>
+                        <h2 class="mt-4 text-3xl font-semibold text-white">Festive Essentials Bundle</h2>
+                        <p class="mt-4 text-sm text-amber-100">Saree, makeup kit, diya thali and gift wrap in one curated box.</p>
+                        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl bg-white/10 p-4 text-center">
+                                <div class="text-2xl font-bold text-white">20%</div>
+                                <p class="text-xs uppercase tracking-[0.3em] text-amber-100">Discount</p>
+                            </div>
+                            <div class="rounded-3xl bg-white/10 p-4 text-center">
+                                <div class="text-2xl font-bold text-white">Free</div>
+                                <p class="text-xs uppercase tracking-[0.3em] text-amber-100">Gift wrap</p>
+                            </div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">Sarees & Dresses</h3>
-                        </div>
-                    </div>
-                    <!-- Category Card 2 -->
-                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                         <div class="overflow-hidden">
-                            <img src="https://placehold.co/400x400/0d9488/FFF?text=Cosmetics+%26+Beauty" alt="Makeup sets with festive packaging" class="w-full h-64 object-cover transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">Cosmetics & Beauty</h3>
-                        </div>
-                    </div>
-                    <!-- Category Card 3 -->
-                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                        <div class="overflow-hidden">
-                           <img src="https://placehold.co/400x400/ca8a04/FFF?text=Traditional+Accessories" alt="Bangles, bindis, dupattas, jewelry" class="w-full h-64 object-cover transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">Traditional Accessories</h3>
-                        </div>
-                    </div>
-                    <!-- Category Card 4 -->
-                    <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                         <div class="overflow-hidden">
-                           <img src="https://placehold.co/400x400/ea580c/FFF?text=Pooja+Samagri" alt="Kalash, diya, agarbatti, dhoop, sindoor" class="w-full h-64 object-cover transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">Pooja Samagri</h3>
+                        <div class="mt-6 flex gap-3">
+                            <a href="#featured" class="btn-soft inline-flex items-center justify-center rounded-full bg-yellow-400 px-5 py-3 text-sm font-semibold text-red-900 hover:bg-yellow-300">Shop Now</a>
+                            <button id="hero-cart-button" type="button" class="btn-soft inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">Add Bundle</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Products Section -->
-        <section id="featured" class="py-20 bg-white">
+        <section id="categories" class="py-20 bg-pattern">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-heading text-red-800 mb-2">Festive Specials</h2>
-                <img src="data:image/svg+xml,%3Csvg width='150' height='20' viewBox='0 0 150 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 20 20, 40 0, 60 10 S 80 0, 100 10 S 120 20, 150 10' stroke='%23D97706' stroke-width='2' fill='none'/%3E%3C/svg%3E" class="mx-auto mb-12" alt="Decorative underline"/>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Product Card 1 -->
-                    <div class="product-card bg-gray-50 rounded-xl shadow-md overflow-hidden text-left border border-gray-200">
-                        <img src="https://placehold.co/600x600/b91c1c/FFF?text=Banarasi+Saree" alt="Red & Gold Banarasi Saree" class="w-full h-72 object-cover">
+                <div class="mx-auto mb-10 max-w-2xl">
+                    <h2 class="text-4xl font-heading text-red-800">Shop by Category</h2>
+                    <p class="mt-4 text-gray-600">Browse sarees, cosmetics, accessories and pooja essentials handpicked for the festival.</p>
+                </div>
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="category-card overflow-hidden rounded-[28px] bg-white shadow-lg shadow-orange-100/50">
+                        <img src="https://placehold.co/400x400/b91c1c/fff?text=Sarees" alt="Sarees category" class="h-64 w-full object-cover" />
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Red & Gold Banarasi Saree</h3>
-                            <p class="text-2xl font-bold text-orange-600 mb-4">₹2499</p>
-                            <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg btn">Add to Cart</button>
+                            <h3 class="text-xl font-semibold text-gray-900">Sarees & Dresses</h3>
+                            <p class="mt-2 text-sm text-gray-600">Festive silhouettes, elegant drapes and party-ready looks.</p>
                         </div>
                     </div>
-                    <!-- Product Card 2 -->
-                    <div class="product-card bg-gray-50 rounded-xl shadow-md overflow-hidden text-left border border-gray-200">
-                        <img src="https://placehold.co/600x600/0d9488/FFF?text=Makeup+Kit" alt="Navratri Makeup Kit" class="w-full h-72 object-cover">
+                    <div class="category-card overflow-hidden rounded-[28px] bg-white shadow-lg shadow-cyan-100/50">
+                        <img src="https://placehold.co/400x400/0d9488/fff?text=Beauty" alt="Beauty category" class="h-64 w-full object-cover" />
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Navratri Makeup Kit</h3>
-                            <p class="text-2xl font-bold text-orange-600 mb-4">₹1199</p>
-                            <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg btn">Add to Cart</button>
+                            <h3 class="text-xl font-semibold text-gray-900">Cosmetics & Beauty</h3>
+                            <p class="mt-2 text-sm text-gray-600">Glam makeup, skincare sets and fragrance collections.</p>
                         </div>
                     </div>
-                    <!-- Product Card 3 -->
-                    <div class="product-card bg-gray-50 rounded-xl shadow-md overflow-hidden text-left border border-gray-200">
-                        <img src="https://placehold.co/600x600/ea580c/FFF?text=Pooja+Thali" alt="Pooja Thali Set" class="w-full h-72 object-cover">
+                    <div class="category-card overflow-hidden rounded-[28px] bg-white shadow-lg shadow-orange-200/50">
+                        <img src="https://placehold.co/400x400/ca8a04/fff?text=Accessories" alt="Accessories category" class="h-64 w-full object-cover" />
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Pooja Thali Set</h3>
-                            <p class="text-2xl font-bold text-orange-600 mb-4">₹799</p>
-                            <button class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-lg btn">Add to Cart</button>
+                            <h3 class="text-xl font-semibold text-gray-900">Traditional Accessories</h3>
+                            <p class="mt-2 text-sm text-gray-600">Jewelry, bangles, dupattas and festive finishing touches.</p>
+                        </div>
+                    </div>
+                    <div class="category-card overflow-hidden rounded-[28px] bg-white shadow-lg shadow-yellow-200/50">
+                        <img src="https://placehold.co/400x400/ea580c/fff?text=Pooja" alt="Pooja Samagri category" class="h-64 w-full object-cover" />
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">Pooja Samagri</h3>
+                            <p class="mt-2 text-sm text-gray-600">Diya sets, incense, thalis and ritual essentials.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="featured" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <div class="mx-auto mb-10 max-w-2xl">
+                    <h2 class="text-4xl font-heading text-red-800">Festive Specials</h2>
+                    <p class="mt-4 text-gray-600">Handpicked bestsellers with easy add-to-cart actions.</p>
+                </div>
+                <div class="grid gap-8 lg:grid-cols-3">
+                    <div class="product-card overflow-hidden rounded-[28px] bg-white shadow-xl shadow-orange-100/40 border border-gray-100">
+                        <img src="https://placehold.co/600x600/b91c1c/fff?text=Banarasi+Saree" alt="Banarasi saree" class="h-72 w-full object-cover" />
+                        <div class="p-6 text-left">
+                            <h3 class="text-2xl font-semibold text-gray-900">Red & Gold Banarasi Saree</h3>
+                            <p class="mt-3 text-xl font-bold text-orange-600">₹2499</p>
+                            <button type="button" class="add-to-cart mt-6 inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-5 py-3 text-white transition hover:bg-teal-700" data-product="Red & Gold Banarasi Saree">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card overflow-hidden rounded-[28px] bg-white shadow-xl shadow-cyan-100/40 border border-gray-100">
+                        <img src="https://placehold.co/600x600/0d9488/fff?text=Makeup+Kit" alt="Makeup kit" class="h-72 w-full object-cover" />
+                        <div class="p-6 text-left">
+                            <h3 class="text-2xl font-semibold text-gray-900">Navratri Makeup Kit</h3>
+                            <p class="mt-3 text-xl font-bold text-orange-600">₹1199</p>
+                            <button type="button" class="add-to-cart mt-6 inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-5 py-3 text-white transition hover:bg-teal-700" data-product="Navratri Makeup Kit">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card overflow-hidden rounded-[28px] bg-white shadow-xl shadow-yellow-100/40 border border-gray-100">
+                        <img src="https://placehold.co/600x600/ea580c/fff?text=Pooja+Thali" alt="Pooja thali" class="h-72 w-full object-cover" />
+                        <div class="p-6 text-left">
+                            <h3 class="text-2xl font-semibold text-gray-900">Pooja Thali Set</h3>
+                            <p class="mt-3 text-xl font-bold text-orange-600">₹799</p>
+                            <button type="button" class="add-to-cart mt-6 inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-5 py-3 text-white transition hover:bg-teal-700" data-product="Pooja Thali Set">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="offers" class="py-20 bg-[#fff7ed]">
+            <div class="container mx-auto px-6 text-center">
+                <div class="mx-auto mb-10 max-w-2xl">
+                    <h2 class="text-4xl font-heading text-red-800">Limited Festival Offers</h2>
+                    <p class="mt-4 text-gray-600">Enjoy special savings and extra benefits on your Navratri shopping.</p>
+                </div>
+                <div class="grid gap-8 lg:grid-cols-3">
+                    <div class="rounded-[32px] border border-orange-100 bg-white p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold text-red-700">Flat 20% Off</h3>
+                        <p class="mt-3 text-gray-600">On all sarees, lehengas, and ethnic wear.</p>
+                        <button type="button" class="offer-btn mt-6 inline-flex rounded-full bg-red-600 px-6 py-3 text-white transition hover:bg-red-700">Shop Sarees</button>
+                    </div>
+                    <div class="rounded-[32px] border border-orange-100 bg-white p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold text-red-700">Buy 2 Get 1</h3>
+                        <p class="mt-3 text-gray-600">Mix-and-match accessories and beauty essentials.</p>
+                        <button type="button" class="offer-btn mt-6 inline-flex rounded-full bg-red-600 px-6 py-3 text-white transition hover:bg-red-700">Shop Accessories</button>
+                    </div>
+                    <div class="rounded-[32px] border border-orange-100 bg-white p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold text-red-700">Free Gift Wrap</h3>
+                        <p class="mt-3 text-gray-600">Complimentary packaging on orders over ₹1999.</p>
+                        <button type="button" class="offer-btn mt-6 inline-flex rounded-full bg-red-600 px-6 py-3 text-white transition hover:bg-red-700">Claim Offer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-heading text-red-800">Why Choose Navratri Bazaar?</h2>
+                    <p class="mt-4 text-gray-600">Trusted festival shopping with fast delivery, secure checkout and joyful service.</p>
+                </div>
+                <div class="grid gap-8 md:grid-cols-3">
+                    <div class="rounded-[32px] border border-gray-200 p-8 text-center shadow-sm">
+                        <h3 class="text-2xl font-semibold text-red-800">Fast Delivery</h3>
+                        <p class="mt-3 text-gray-600">Orders delivered in time for festival celebrations.</p>
+                    </div>
+                    <div class="rounded-[32px] border border-gray-200 p-8 text-center shadow-sm">
+                        <h3 class="text-2xl font-semibold text-red-800">Secure Checkout</h3>
+                        <p class="mt-3 text-gray-600">Safe payments and trusted order tracking for every purchase.</p>
+                    </div>
+                    <div class="rounded-[32px] border border-gray-200 p-8 text-center shadow-sm">
+                        <h3 class="text-2xl font-semibold text-red-800">Easy Returns</h3>
+                        <p class="mt-3 text-gray-600">Hassle-free exchanges and returns if you are not satisfied.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-[#fff7ed]">
+            <div class="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl font-heading text-red-800">Get in Touch</h2>
+                    <p class="mt-4 text-gray-600">Have a question? Send us a message and our festival support team will reply quickly.</p>
+                    <div class="mt-8 space-y-4 rounded-[32px] border border-gray-200 bg-white p-8 shadow-lg">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Email</h3>
+                            <p class="mt-2 text-gray-600">support@navratribazaar.com</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Phone</h3>
+                            <p class="mt-2 text-gray-600">+91 123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+                <form id="contact-form" class="mt-12 rounded-[32px] border border-gray-200 bg-white p-8 shadow-lg lg:mt-0 lg:w-[520px]">
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <input type="text" id="contact-name" placeholder="Your name" class="h-12 rounded-2xl border border-gray-200 px-4 focus:border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/40" required />
+                        <input type="email" id="contact-email" placeholder="Your email" class="h-12 rounded-2xl border border-gray-200 px-4 focus:border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/40" required />
+                    </div>
+                    <textarea id="contact-message" rows="4" placeholder="Your message" class="mt-4 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/40" required></textarea>
+                    <button type="submit" class="mt-4 inline-flex w-full items-center justify-center rounded-full bg-red-700 px-6 py-3 text-white transition hover:bg-red-800">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
-    
-    <!-- Footer -->
-    <footer class="bg-deep-red text-white pt-12 pb-8 bg-pattern" style="background-color: #6b2121;">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+
+    <footer class="border-t border-gray-200 bg-[#6b2121] text-white">
+        <div class="container mx-auto px-6 py-10 grid gap-8 md:grid-cols-3">
             <div>
-                <h3 class="text-2xl font-heading mb-4 text-yellow-300">Navratri Bazaar</h3>
-                <p class="text-gray-300">Your one-stop shop for all festive needs. Celebrate with devotion and joy.</p>
+                <h3 class="text-2xl font-heading text-yellow-300">Navratri Bazaar</h3>
+                <p class="mt-3 text-gray-300">Your festival destination for curated sarees, beauty products and pooja essentials.</p>
             </div>
             <div>
-                <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">About Us</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">Customer Care</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">Festive Offers</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-yellow-300">Track Order</a></li>
+                <h4 class="text-lg font-semibold text-white">Quick Links</h4>
+                <ul class="mt-4 space-y-2 text-gray-300">
+                    <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
+                    <li><a href="#categories" class="hover:text-yellow-300">Categories</a></li>
+                    <li><a href="#offers" class="hover:text-yellow-300">Offers</a></li>
+                    <li><a href="#featured" class="hover:text-yellow-300">Products</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-lg mb-4 text-white">Connect With Us</h4>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="text-gray-300 hover:text-yellow-300">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.732 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
-                    </a>
-                    <a href="#" class="text-gray-300 hover:text-yellow-300">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.267.058 1.675.072 4.947.072s3.68-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.267.072-1.675.072-4.947s-.014-3.68-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
-                    </a>
-                    <a href="#" class="text-gray-300 hover:text-yellow-300">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
+                <h4 class="text-lg font-semibold text-white">Subscribe</h4>
+                <p class="mt-3 text-gray-300">Get festival updates and special offers delivered to your inbox.</p>
+                <div class="mt-4 flex gap-2">
+                    <input type="email" placeholder="Enter email" class="flex-1 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white placeholder:text-white/70 focus:border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/40" />
+                    <button class="rounded-full bg-yellow-400 px-4 py-2 text-red-900 font-semibold">Go</button>
                 </div>
             </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4 text-white">Contact</h4>
-                <p class="text-gray-300">support@navratribazaar.com</p>
-                <p class="text-gray-300">+91 123 456 7890</p>
-            </div>
         </div>
-        <div class="mt-8 border-t border-gray-700 text-center pt-6">
-            <p class="text-gray-400">&copy; 2024 Navratri Bazaar. All Rights Reserved. Jai Mata Di!</p>
-        </div>
+        <div class="border-t border-white/10 bg-[#5c1d1d] px-6 py-6 text-center text-sm text-gray-400">© 2026 Navratri Bazaar. All Rights Reserved. Jai Mata Di!</div>
     </footer>
 
+    <div id="toast" class="toast fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-red-700 px-6 py-3 text-white shadow-xl"></div>
+
     <script>
-        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const desktopSearchButton = document.getElementById('desktop-search-button');
+        const mobileSearchButton = document.getElementById('mobile-search-button');
+        const desktopSearchInput = document.getElementById('desktop-search-input');
+        const mobileSearchInput = document.getElementById('mobile-search-input');
+        const cartButton = document.getElementById('cart-button');
+        const cartCount = document.getElementById('cart-count');
+        const heroCartButton = document.getElementById('hero-cart-button');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const offerButtons = document.querySelectorAll('.offer-btn');
+        const contactForm = document.getElementById('contact-form');
+        const toast = document.getElementById('toast');
+        let cartItems = 0;
+        let toastTimeout;
+
+        const showToast = (message) => {
+            toast.textContent = message;
+            toast.classList.remove('hidden', 'opacity-0');
+            toast.classList.add('opacity-100');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('opacity-0');
+                toast.classList.remove('opacity-100');
+                toastTimeout = setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3000);
+        };
+
+        const updateCartCount = () => {
+            cartCount.textContent = cartItems;
+        };
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        const handleSearch = (value) => {
+            const trimmed = value.trim();
+            if (!trimmed) {
+                showToast('Please enter a search term.');
+                return;
+            }
+            showToast(`Searching for "${trimmed}"...`);
+        };
+
+        desktopSearchButton.addEventListener('click', () => handleSearch(desktopSearchInput.value));
+        mobileSearchButton.addEventListener('click', () => handleSearch(mobileSearchInput.value));
+
+        [desktopSearchInput, mobileSearchInput].forEach((input) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    handleSearch(input.value);
+                }
+            });
+        });
+
+        addToCartButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const productName = button.dataset.product || 'Product';
+                cartItems += 1;
+                updateCartCount();
+                showToast(`${productName} added to cart!`);
+            });
+        });
+
+        heroCartButton.addEventListener('click', () => {
+            cartItems += 1;
+            updateCartCount();
+            showToast('Festival Essentials Bundle added to cart!');
+        });
+
+        offerButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                showToast('Offer applied! Scroll to products to shop now.');
+            });
+        });
+
+        cartButton.addEventListener('click', () => {
+            showToast(`You have ${cartItems} item${cartItems === 1 ? '' : 's'} in your cart.`);
+        });
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+            if (!name || !email || !message) {
+                showToast('Please fill in all contact fields.');
+                return;
+            }
+            showToast('Message sent! Our team will contact you soon.');
+            contactForm.reset();
+        });
+
+        updateCartCount();
     </script>
 </body>
 </html>
